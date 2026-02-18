@@ -7,22 +7,25 @@ type TIndicatorProps = {
 };
 
 const Waveform = memo(({ className, isScreenSharing }: TIndicatorProps) => {
+  const colorClass = isScreenSharing ? 'text-blue-500' : 'text-green-500';
+
   if (isScreenSharing) {
     return (
       <div
         className={cn(
-          'flex items-center justify-center h-4 w-6 animate-in zoom-in-75 duration-300 text-blue-500',
+          'flex items-center justify-center h-4 w-4 animate-in zoom-in-75 duration-300',
+          colorClass,
           className
         )}
       >
         <svg
-          viewBox="0 0 24 16"
+          viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-full w-full"
         >
           <path
-            d="M2 8C2 8 5.63636 2 12 2C18.3636 2 22 8 22 8C22 8 18.3636 14 12 14C5.63636 14 2 8 2 8Z"
+            d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
@@ -31,7 +34,7 @@ const Waveform = memo(({ className, isScreenSharing }: TIndicatorProps) => {
           <circle
             className="animate-eye-blink"
             cx="12"
-            cy="8"
+            cy="12"
             r="3"
             fill="currentColor"
           />
@@ -53,12 +56,13 @@ const Waveform = memo(({ className, isScreenSharing }: TIndicatorProps) => {
   return (
     <div
       className={cn(
-        'flex items-center justify-center h-4 w-6 animate-in fade-in duration-700 text-green-500',
+        'flex items-center justify-center h-4 w-4 animate-in fade-in duration-700',
+        colorClass,
         className
       )}
     >
       <svg
-        viewBox="0 0 23 16"
+        viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="h-full w-full"
@@ -66,54 +70,55 @@ const Waveform = memo(({ className, isScreenSharing }: TIndicatorProps) => {
       >
         <rect
           className="animate-wf-loop"
-          rx="1.5"
+          rx="1"
           fill="currentColor"
-          width="3"
-          style={{ '--max-h': 8, '--delay': '0.0s' } as React.CSSProperties}
+          width="2"
+          x="3"
+          style={{ '--max-h': 10, '--delay': '0.0s' } as React.CSSProperties}
         />
         <rect
           className="animate-wf-loop"
-          rx="1.5"
+          rx="1"
           fill="currentColor"
-          width="3"
-          x="5"
-          style={{ '--max-h': 13, '--delay': '0.2s' } as React.CSSProperties}
+          width="2"
+          x="7"
+          style={{ '--max-h': 16, '--delay': '0.2s' } as React.CSSProperties}
         />
         <rect
           className="animate-wf-loop"
-          rx="1.5"
+          rx="1"
           fill="currentColor"
-          width="3"
-          x="10"
-          style={{ '--max-h': 10, '--delay': '0.4s' } as React.CSSProperties}
+          width="2"
+          x="11"
+          style={{ '--max-h': 12, '--delay': '0.4s' } as React.CSSProperties}
         />
         <rect
           className="animate-wf-loop"
-          rx="1.5"
+          rx="1"
           fill="currentColor"
-          width="3"
+          width="2"
           x="15"
-          style={{ '--max-h': 16, '--delay': '0.6s' } as React.CSSProperties}
+          style={{ '--max-h': 20, '--delay': '0.6s' } as React.CSSProperties}
         />
         <rect
           className="animate-wf-loop"
-          rx="1.5"
+          rx="1"
           fill="currentColor"
-          width="3"
-          x="20"
-          style={{ '--max-h': 8, '--delay': '0.8s' } as React.CSSProperties}
+          width="2"
+          x="19"
+          style={{ '--max-h': 10, '--delay': '0.8s' } as React.CSSProperties}
         />
       </svg>
 
       <style>{`
         @keyframes wf-pulsate {
           0%, 100% { 
-            height: 4px; 
-            y: 6px;
+            height: 6px; 
+            y: 9px;
           }
           50% { 
             height: calc(var(--max-h) * 1px); 
-            y: calc((16 - var(--max-h)) * 0.5px); 
+            y: calc((24 - var(--max-h)) * 0.5px); 
           }
         }
         .animate-wf-loop {

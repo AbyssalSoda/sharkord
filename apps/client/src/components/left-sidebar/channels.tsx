@@ -79,7 +79,7 @@ const Voice = memo(({ channel, ...props }: TVoiceProps) => {
           <Volume2 className="h-4 w-4" />
         )}
 
-        <span className="flex-1 truncate ml-0.5">{channel.name}</span>
+        <span className="flex-1 truncate">{channel.name}</span>
 
         {!isActive && unreadCount > 0 && (
           <div className="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-xs font-medium text-primary-foreground">
